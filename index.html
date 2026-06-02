@@ -94,13 +94,14 @@
       box-shadow: 0 0 90px rgba(255,180,210,0.75);
     }
 
-    .flower {
+    .confetti {
       position: fixed;
-      top: -50px;
+      top: -20px;
       pointer-events: none;
       z-index: 999;
       animation: fall linear infinite;
-      opacity: 0.9;
+      border-radius: 2px;
+      opacity: 0.95;
     }
 
     @keyframes bounce {
@@ -109,7 +110,17 @@
     }
 
     @keyframes fall {
-      to { transform: translateY(115vh) rotate(360deg); }
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(50vh) translateX(40px) rotate(180deg);
+      }
+
+      100% {
+        transform: translateY(115vh) translateX(-40px) rotate(720deg);
+      }
     }
   </style>
 </head>
@@ -224,9 +235,9 @@
   <section class="final">
     <div class="card">
       <h2>Voilà ton cadeau.</h2>
-          <h2>A ton tour d'être en renne.</h2>
+      <h2>À ton tour d'être en renne.</h2>
       <img src="renne.png" alt="Louise en renne">
-      <h1>Encore Joyeux anniversaire !!!</h1>
+      <h1>Encore joyeux anniversaire !!!</h1>
     </div>
   </section>
 
@@ -236,20 +247,35 @@
       music.play();
     }
 
-    function createFlower() {
-      const flowers = ["🌸", "🌺", "🌷", "🌼", "💮"];
-      const flower = document.createElement("div");
-      flower.classList.add("flower");
-      flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
-      flower.style.left = Math.random() * 100 + "vw";
-      flower.style.fontSize = Math.random() * 24 + 18 + "px";
-      flower.style.animationDuration = Math.random() * 7 + 6 + "s";
-      document.body.appendChild(flower);
+    function createConfetti() {
+      const colors = [
+        "#ff4d6d",
+        "#ffb703",
+        "#06d6a0",
+        "#4cc9f0",
+        "#f72585",
+        "#ffd166",
+        "#8338ec",
+        "#ffffff"
+      ];
 
-      setTimeout(() => flower.remove(), 13000);
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.width = (Math.random() * 10 + 6) + "px";
+      confetti.style.height = (Math.random() * 14 + 8) + "px";
+      confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
+      document.body.appendChild(confetti);
+
+      setTimeout(() => {
+        confetti.remove();
+      }, 12000);
     }
 
-    setInterval(createFlower, 350);
+    setInterval(createConfetti, 120);
   </script>
 
 </body>
