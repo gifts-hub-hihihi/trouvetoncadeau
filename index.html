@@ -3,22 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Le cadeau de Louise</title>
+  <title>Trouve ton cadeau</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: linear-gradient(180deg, #1b1026, #fff0df, #ffd6dc, #1b1026);
+      font-family: Georgia, serif;
+      background: linear-gradient(180deg, #1b1026, #2c1738, #fff0df, #ffd6dc, #1b1026);
       color: white;
       overflow-x: hidden;
     }
@@ -29,118 +23,51 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 50px 22px;
-      position: relative;
-    }
-
-    .dark {
-      background:
-        radial-gradient(circle at top, rgba(255, 160, 210, 0.25), transparent 45%),
-        linear-gradient(180deg, #1b1026, #2b1438);
-    }
-
-    .light {
-      color: #8b2f55;
-      background:
-        radial-gradient(circle at top left, rgba(255, 190, 210, 0.5), transparent 35%),
-        linear-gradient(180deg, #fff0df, #ffd6dc);
-    }
-
-    .pink {
-      color: #7c244c;
-      background:
-        radial-gradient(circle at center, rgba(255,255,255,0.65), transparent 45%),
-        linear-gradient(180deg, #ffd6dc, #f8b7c8);
+      padding: 40px 20px;
     }
 
     .card {
-      width: min(900px, 92vw);
-      padding: clamp(28px, 6vw, 55px);
-      border-radius: 34px;
-      background: rgba(255,255,255,0.13);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 0 70px rgba(255,255,255,0.22);
-      animation: appear 1.2s ease both;
+      max-width: 850px;
+      padding: 45px;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 60px rgba(255,255,255,0.18);
       border: 1px solid rgba(255,255,255,0.18);
     }
 
-    .light .card,
-    .pink .card {
-      background: rgba(255,255,255,0.48);
-      box-shadow: 0 0 70px rgba(184,63,112,0.18);
+    .light {
+      color: #7c244c;
+      background: linear-gradient(180deg, #fff0df, #ffd6dc);
+    }
+
+    .light .card {
+      background: rgba(255,255,255,0.55);
+      box-shadow: 0 0 60px rgba(184,63,112,0.18);
     }
 
     h1 {
-      font-size: clamp(3rem, 8vw, 6.2rem);
-      line-height: 1.05;
-      margin-bottom: 22px;
+      font-size: clamp(3rem, 8vw, 6rem);
+      margin-bottom: 25px;
       font-weight: 500;
     }
 
     h2 {
-      font-size: clamp(2.2rem, 6vw, 4.2rem);
-      line-height: 1.1;
+      font-size: clamp(2.2rem, 6vw, 4rem);
       margin-bottom: 22px;
       font-weight: 500;
     }
 
     p {
-      font-size: clamp(1.15rem, 3vw, 1.65rem);
-      line-height: 1.65;
-      margin: 10px 0;
-    }
-
-    .small {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      opacity: 0.85;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      line-height: 1.6;
+      margin: 12px 0;
     }
 
     .down {
-      margin-top: 36px;
-      font-size: 2.8rem;
+      margin-top: 35px;
+      font-size: 2.5rem;
       animation: bounce 1.4s infinite;
-    }
-
-    .badge {
-      display: inline-block;
-      margin-bottom: 24px;
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.2);
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .progress {
-      width: 100%;
-      height: 26px;
-      background: rgba(139,47,85,0.18);
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 32px 0;
-      border: 1px solid rgba(139,47,85,0.2);
-    }
-
-    .bar {
-      height: 100%;
-      width: 99%;
-      background: linear-gradient(90deg, #f6a6c1, #d85b88, #b83f70);
-      animation: load 3.2s ease;
-    }
-
-    .stats {
-      display: grid;
-      gap: 18px;
-      margin-top: 30px;
-    }
-
-    .stat {
-      padding: 20px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.42);
-      font-size: clamp(1.05rem, 2.8vw, 1.35rem);
-      box-shadow: 0 10px 30px rgba(139,47,85,0.08);
     }
 
     button {
@@ -153,27 +80,18 @@
       background: #b83f70;
       color: white;
       box-shadow: 0 0 35px rgba(184,63,112,0.45);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: 0.2s;
     }
 
     button:hover {
       transform: scale(1.06);
-      box-shadow: 0 0 50px rgba(184,63,112,0.75);
     }
 
     .final img {
       width: min(90vw, 720px);
-      border-radius: 38px;
-      margin: 32px 0;
+      border-radius: 35px;
+      margin: 30px 0;
       box-shadow: 0 0 90px rgba(255,180,210,0.75);
-      border: 2px solid rgba(255,255,255,0.35);
-    }
-
-    .signature {
-      font-size: clamp(1.6rem, 4vw, 2.6rem);
-      color: #ffd1e2;
-      margin-top: 20px;
-      font-style: italic;
     }
 
     .flower {
@@ -185,40 +103,13 @@
       opacity: 0.9;
     }
 
-    .sparkle {
-      position: fixed;
-      top: -30px;
-      pointer-events: none;
-      z-index: 998;
-      animation: fall linear infinite;
-      opacity: 0.8;
-    }
-
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(45px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(15px); }
     }
 
-    @keyframes load {
-      from { width: 0; }
-      to { width: 99%; }
-    }
-
     @keyframes fall {
-      to {
-        transform: translateY(115vh) rotate(360deg);
-      }
+      to { transform: translateY(115vh) rotate(360deg); }
     }
   </style>
 </head>
@@ -229,88 +120,113 @@
     <source src="musique.mp3" type="audio/mpeg">
   </audio>
 
-  <section class="dark">
+  <section>
     <div class="card">
-      <div class="badge">Mission anniversaire</div>
-      <h1>Louise,<br>tu as trouvé le site secret.</h1>
-      <p>Félicitations. Très peu de personnes arrivent jusqu’ici.</p>
-      <p>Mais ton vrai cadeau n’est pas encore totalement révélé...</p>
+      <h1>Louise.</h1>
+      <p>Tu as trouvé le site.</p>
+      <p>C’est déjà pas mal.</p>
+      <div class="down">↓</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>Mais le cadeau n’est pas ici.</h2>
+      <p>Il faut descendre.</p>
       <div class="down">↓</div>
     </div>
   </section>
 
   <section class="light">
     <div class="card">
-      <div class="badge">Étape 1</div>
-      <h2>Vérification anniversaire</h2>
-      <p>Prénom détecté : <strong>Louise</strong> ✔</p>
-      <p>Journée spéciale détectée : <strong>oui</strong> ✔</p>
-      <p>Niveau de fête recommandé : <strong>maximum</strong> ✔</p>
+      <h2>Non, toujours pas.</h2>
+      <p>Mais tu es sur la bonne voie.</p>
       <div class="down">↓</div>
     </div>
   </section>
 
   <section class="light">
     <div class="card">
-      <div class="badge">Étape 2</div>
-      <h2>Analyse ADN en cours...</h2>
-      <div class="progress">
-        <div class="bar"></div>
-      </div>
-      <p>Recherche de traces de gâteau, de fleurs, de magie et de comportement suspect...</p>
-      <p class="small">Merci de rester calme pendant l’analyse.</p>
+      <h2>Encore un peu.</h2>
+      <p>Le cadeau est plus bas.</p>
       <div class="down">↓</div>
     </div>
   </section>
 
-  <section class="pink">
+  <section>
     <div class="card">
-      <div class="badge">Résultats provisoires</div>
-      <h2>Profil de Louise</h2>
-      <div class="stats">
-        <div class="stat">🎂 Capacité à mériter du gâteau : <strong>100%</strong></div>
-        <div class="stat">🌸 Quantité de fleurs méritées : <strong>illimitée</strong></div>
-        <div class="stat">🎁 Probabilité de trouver son cadeau : <strong>très élevée</strong></div>
-        <div class="stat">💖 Niveau de gentillesse : <strong>99%</strong></div>
-        <div class="stat">🦌 Probabilité d’être un renne magique : <strong>97,8%</strong></div>
-      </div>
+      <h2>Un peu plus bas.</h2>
+      <p>Vraiment.</p>
+      <div class="down">↓</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>Tu pensais que ce serait rapide ?</h2>
+      <p>Erreur.</p>
       <div class="down">↓</div>
     </div>
   </section>
 
   <section class="light">
     <div class="card">
-      <div class="badge">Alerte cadeau</div>
-      <h2>🎁 Cadeau détecté</h2>
-      <p>Une surprise a été localisée tout en bas de cette page.</p>
-      <p>Attention : elle pourrait modifier définitivement ton identité officielle.</p>
+      <h2>Le cadeau arrive.</h2>
+      <p>Enfin... presque.</p>
       <div class="down">↓</div>
     </div>
   </section>
 
-  <section class="pink">
+  <section class="light">
     <div class="card">
-      <div class="badge">Dernière étape</div>
-      <h2>Résultat inattendu détecté.</h2>
-      <p>Les données sont formelles.</p>
-      <p>Il est temps de révéler la vérité sur Louise.</p>
-      <button onclick="startMusic()">🎵 Révéler la vérité</button>
-      <p class="small">Clique sur le bouton, puis continue à descendre.</p>
+      <h2>Petit contrôle.</h2>
+      <p>Es-tu prête à découvrir la vérité ?</p>
+      <p>Probablement pas.</p>
       <div class="down">↓</div>
     </div>
   </section>
 
-  <section class="final dark">
+  <section>
     <div class="card">
-      <div class="badge">Identité confirmée</div>
-      <h2>Louise est officiellement...</h2>
+      <h2>Il reste quelques centimètres.</h2>
+      <p>Enfin, beaucoup de centimètres.</p>
+      <div class="down">↓</div>
+    </div>
+  </section>
 
+  <section>
+    <div class="card">
+      <h2>Dernière ligne droite.</h2>
+      <p>Cette fois c’est presque vrai.</p>
+      <div class="down">↓</div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="card">
+      <h2>Bon.</h2>
+      <p>Avant de continuer, il faut activer l’ambiance.</p>
+      <button onclick="startMusic()">🎵 Lancer la chanson</button>
+      <p>Puis continue à descendre.</p>
+      <div class="down">↓</div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="card">
+      <h2>Maintenant oui.</h2>
+      <p>Le vrai cadeau est juste après.</p>
+      <p>Promis.</p>
+      <div class="down">↓</div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="card">
+      <h2>Voilà ton cadeau.</h2>
       <img src="renne.png" alt="Louise en renne">
-
-      <h1>un renne magique 🦌</h1>
-      <p>Joyeux anniversaire Louise !</p>
-      <p>Que cette année soit remplie de fleurs, de surprises, de rires et de beaucoup de gâteau.</p>
-      <div class="signature">Avec tout mon amour ❤️</div>
+      <h1>Louise en renne.</h1>
+      <p>C’était évidemment la seule conclusion possible.</p>
     </div>
   </section>
 
@@ -321,24 +237,19 @@
     }
 
     function createFlower() {
-      const flowers = ["🌸", "🌺", "🌷", "🌼", "💮", "🎂", "🎁", "✨"];
+      const flowers = ["🌸", "🌺", "🌷", "🌼", "💮"];
       const flower = document.createElement("div");
-
       flower.classList.add("flower");
       flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
-
       flower.style.left = Math.random() * 100 + "vw";
       flower.style.fontSize = Math.random() * 24 + 18 + "px";
       flower.style.animationDuration = Math.random() * 7 + 6 + "s";
-
       document.body.appendChild(flower);
 
-      setTimeout(() => {
-        flower.remove();
-      }, 13000);
+      setTimeout(() => flower.remove(), 13000);
     }
 
-    setInterval(createFlower, 320);
+    setInterval(createFlower, 350);
   </script>
 
 </body>
