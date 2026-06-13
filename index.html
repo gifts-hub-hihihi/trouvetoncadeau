@@ -2,281 +2,101 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trouve ton cadeau</title>
-
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: Georgia, serif;
-      background: linear-gradient(180deg, #1b1026, #2c1738, #fff0df, #ffd6dc, #1b1026);
-      color: white;
-      overflow-x: hidden;
-    }
-
-    section {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .card {
-      max-width: 850px;
-      padding: 45px;
-      border-radius: 32px;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 0 60px rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.18);
-    }
-
-    .light {
-      color: #7c244c;
-      background: linear-gradient(180deg, #fff0df, #ffd6dc);
-    }
-
-    .light .card {
-      background: rgba(255,255,255,0.55);
-      box-shadow: 0 0 60px rgba(184,63,112,0.18);
-    }
-
-    h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      margin-bottom: 25px;
-      font-weight: 500;
-    }
-
-    h2 {
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      margin-bottom: 22px;
-      font-weight: 500;
-    }
-
-    p {
-      font-size: clamp(1.2rem, 3vw, 1.6rem);
-      line-height: 1.6;
-      margin: 12px 0;
-    }
-
-    .down {
-      margin-top: 35px;
-      font-size: 2.5rem;
-      animation: bounce 1.4s infinite;
-    }
-
-    button {
-      margin-top: 30px;
-      padding: 18px 34px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 999px;
-      cursor: pointer;
-      background: #b83f70;
-      color: white;
-      box-shadow: 0 0 35px rgba(184,63,112,0.45);
-      transition: 0.2s;
-    }
-
-    button:hover {
-      transform: scale(1.06);
-    }
-
-    .final img {
-      width: min(90vw, 720px);
-      border-radius: 35px;
-      margin: 30px 0;
-      box-shadow: 0 0 90px rgba(255,180,210,0.75);
-    }
-
-    .confetti {
-      position: fixed;
-      top: -20px;
-      pointer-events: none;
-      z-index: 999;
-      animation: fall linear infinite;
-      border-radius: 2px;
-      opacity: 0.95;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(15px); }
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(50vh) translateX(40px) rotate(180deg);
-      }
-
-      100% {
-        transform: translateY(115vh) translateX(-40px) rotate(720deg);
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Louise : trouve ton cadeau</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-
   <audio id="music" loop>
-    <source src="musique.mp3" type="audio/mpeg">
+    <source src="assets/musique.mp3" type="audio/mpeg">
   </audio>
 
-  <section>
-    <div class="card">
-      <h1>Tiens tiens tiens Louise...</h1>
-      <p>Tu as trouvé le site.</p>
-      <p>C’est déjà pas mal.</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
+  <main id="app">
+    <section id="welcomeScreen" class="screen active birthday-screen">
+      <div class="birthday-deco deco-1">🎈</div>
+      <div class="birthday-deco deco-2">🎂</div>
+      <div class="birthday-deco deco-3">✨</div>
+      <div class="birthday-deco deco-4">🎁</div>
 
-  <section>
-    <div class="card">
-      <h2>Mais le cadeau n’est pas ici.</h2>
-      <p>Il faut descendre.</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
+      <div class="card birthday-card">
+        <p class="eyebrow">Mission anniversaire</p>
+        <h1>Tiens tiens Louise...</h1>
+        <p>Tu as trouvé le site.</p>
+        <p>C’est déjà pas mal.</p>
+        <button id="welcomeButton">Continuer</button>
+      </div>
+    </section>
 
-  <section class="light">
-    <div class="card">
-      <h2>Non, toujours pas.</h2>
-      <p>Mais tu es sur la bonne voie.</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
+    <section id="startScreen" class="screen birthday-screen">
+      <div class="birthday-deco deco-1">🧫</div>
+      <div class="birthday-deco deco-2">🎊</div>
+      <div class="birthday-deco deco-3">🔬</div>
+      <div class="birthday-deco deco-4">☕</div>
 
-  <section class="light">
-    <div class="card">
-      <h2>Encore un peu.</h2>
-      <p>Le cadeau est plus bas.</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
+      <div class="card birthday-card">
+        <p class="eyebrow">Laboratoire secret</p>
+        <h1>Ton cadeau est caché.</h1>
+        <p>Pour le récupérer, tu dois survivre à une journée de thèse en microbiologie.</p>
+        <p>Récupère 🔬 🧫 ☕, évite Pascal, puis rejoins 🎁.</p>
+        <button id="startButton">🧪 Entrer dans le labo</button>
+      </div>
+    </section>
 
-  <section>
-    <div class="card">
-      <h2>Un peu plus bas.</h2>
-      <p>Vraiment.</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
+    <section id="gameScreen" class="screen">
+      <div class="topbar">
+        <div>
+          <strong>Objets :</strong>
+          <span id="itemsCount">0/3</span>
+        </div>
+        <div id="status">Trouve 🔬 🧫 ☕ puis rejoins 🎁</div>
+      </div>
 
-  <section>
-    <div class="card">
-      <h2>Tu pensais que ce serait rapide ?</h2>
-      <p>Erreur hihihi.</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
+      <div id="lab" aria-label="Laboratoire de Louise">
+        <div id="player" class="entity" aria-label="Louise">👩‍🔬</div>
+        <div id="pascal" class="entity enemy" aria-label="Pascal">👨‍🏫</div>
 
-  <section class="light">
-    <div class="card">
-      <h2>Le cadeau arrive.</h2>
-      <p>Enfin... presque.</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
+        <div class="wall wall-1"></div>
+        <div class="wall wall-2"></div>
+        <div class="wall wall-3"></div>
+        <div class="bench bench-1">LAB</div>
+        <div class="bench bench-2">PCR</div>
 
-  <section class="light">
-    <div class="card">
-      <h2>Petit contrôle.</h2>
-      <p>Es-tu prête à découvrir le cadeau ?</p>
-      <p>Probablement pas...</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
+        <div class="item" data-item="microscope" style="left: 12%; top: 18%;">🔬</div>
+        <div class="item" data-item="culture" style="left: 78%; top: 22%;">🧫</div>
+        <div class="item" data-item="cafe" style="left: 16%; top: 74%;">☕</div>
+        <div id="giftDoor" class="gift locked" style="left: 80%; top: 76%;">🎁</div>
+      </div>
 
-  <section>
-    <div class="card">
-      <h2>Il reste quelques centimètres.</h2>
-      <p>Enfin, beaucoup de centimètres.</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
+      <div id="controls" aria-label="Contrôles tactiles">
+        <button class="ctrl" data-dir="up">↑</button>
+        <div class="ctrl-row">
+          <button class="ctrl" data-dir="left">←</button>
+          <button class="ctrl" data-dir="down">↓</button>
+          <button class="ctrl" data-dir="right">→</button>
+        </div>
+      </div>
+    </section>
 
-  <section>
-    <div class="card">
-      <h2>Dernière ligne droite.</h2>
-      <p>Cette fois c’est presque vrai.</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
+    <section id="modal" class="screen overlay">
+      <div class="card small">
+        <h2>Pascal apparaît.</h2>
+        <p>“Tu as une minute pour discuter des résultats ?”</p>
+        <button id="escapeButton">😱 Fuir</button>
+      </div>
+    </section>
 
-  <section class="light">
-    <div class="card">
-      <h2>Bon.</h2>
-      <p>Avant de continuer, il faut activer l’ambiance.</p>
-      <button onclick="startMusic()">🎵 Lancer la chanson</button>
-      <p>Puis continue à descendre.</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
+    <section id="finalScreen" class="screen final">
+      <div class="card">
+        <p class="eyebrow">Cadeau débloqué</p>
+        <h2>Culture réussie !</h2>
+        <p>Après des années de recherche, de réunions et d’évitement stratégique de Pascal...</p>
+        <h1>Tu as trouvé ton cadeau !</h1>
+        <img src="assets/renne.png" alt="Louise en renne" />
+        <h2>Encore joyeux anniversaire Louise !!!</h2>
+      </div>
+    </section>
+  </main>
 
-  <section class="light">
-    <div class="card">
-      <h2>Maintenant oui.</h2>
-      <p>Le vrai cadeau est juste après.</p>
-      <p>Promis.</p>
-      <div class="down">↓</div>
-    </div>
-  </section>
-
-  <section class="final">
-    <div class="card">
-      <h2>Voilà ton cadeau.</h2>
-      <h2>À ton tour d'être en renne.</h2>
-      <img src="renne.png" alt="Louise en renne">
-      <h1>Encore joyeux anniversaire !!!</h1>
-    </div>
-  </section>
-
-  <script>
-    function startMusic() {
-      const music = document.getElementById("music");
-      music.play();
-    }
-
-    function createConfetti() {
-      const colors = [
-        "#ff4d6d",
-        "#ffb703",
-        "#06d6a0",
-        "#4cc9f0",
-        "#f72585",
-        "#ffd166",
-        "#8338ec",
-        "#ffffff"
-      ];
-
-      const confetti = document.createElement("div");
-      confetti.classList.add("confetti");
-
-      confetti.style.left = Math.random() * 100 + "vw";
-      confetti.style.width = (Math.random() * 10 + 6) + "px";
-      confetti.style.height = (Math.random() * 14 + 8) + "px";
-      confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-      confetti.style.animationDuration = (Math.random() * 5 + 5) + "s";
-
-      document.body.appendChild(confetti);
-
-      setTimeout(() => {
-        confetti.remove();
-      }, 12000);
-    }
-
-    setInterval(createConfetti, 120);
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
